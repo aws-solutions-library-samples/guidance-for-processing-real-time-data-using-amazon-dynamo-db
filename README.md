@@ -1,12 +1,4 @@
-#  Guidance for building aggregations for dynamodb tables using amazon dynamodb streams on aws
-
-
-The Guidance title should be consistent with the title established first in Alchemy.
-
-**Example:** *Guidance for Product Substitutions on AWS*
-
-This title correlates exactly to the Guidance it’s linked to, including its corresponding sample code repository. 
-
+#  Guidance for building aggregations for Dynamodb tables using Amazon Dynamodb streams on AWS
 
 ## Table of Content (required)
 
