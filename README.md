@@ -1,4 +1,5 @@
-# Guidance Title (required)
+#  Guidance for building aggregations for dynamodb tables using amazon dynamodb streams on aws
+
 
 The Guidance title should be consistent with the title established first in Alchemy.
 
