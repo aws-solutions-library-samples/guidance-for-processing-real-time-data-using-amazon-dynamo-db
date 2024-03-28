@@ -29,8 +29,9 @@ This AWS Guidance is built to showcase how to perform aggregations on Amazon Dyn
 
 For more detailed information, please visit the AWS Database Blog post​ http://disq.us/t/4j3itk0.
 
-2. Include the architecture diagram image, as well as the steps explaining the high-level overview and flow of the architecture. 
-    - To add a screenshot, create an ‘assets/images’ folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README. 
+Architecture diagram:
+
+![Architecture diagram](./assets/images/architecture.png)
 
 ### Cost ( required )
 
