@@ -91,8 +91,7 @@ Deployment steps must be numbered, comprehensive, and usable to customers at any
     ```aws cloudformation create-stack \
   --stack-name ddbaggregate \
   --template-body file://CloudFormation.yaml \
- --capabilities CAPABILITY_NAMED_IAM
-```
+ --capabilities CAPABILITY_NAMED_IAM```
 
 
 
