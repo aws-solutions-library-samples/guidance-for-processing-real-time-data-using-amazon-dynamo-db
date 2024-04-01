@@ -47,21 +47,10 @@ We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/la
 
 ## Prerequisites (required)
 
-### Operating System (required)
-
-- Talk about the base Operating System (OS) and environment that can be used to run or deploy this Guidance, such as *Mac, Linux, or Windows*. Include all installable packages or modules required for the deployment. 
-- By default, assume Amazon Linux 2/Amazon Linux 2023 AMI as the base environment. All packages that are not available by default in AMI must be listed out.  Include the specific version number of the package or module.
-
-**Example:**
-“These deployment instructions are optimized to best work on **<Amazon Linux 2 AMI>**.  Deployment in another OS may require additional steps.”
-
-- Include install commands for packages, if applicable.
-
-
-### Third-party tools (If applicable)
-
-*List any installable third-party tools required for deployment.*
-
+- The [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed.
+- The visual editor of your choice, for example [Visual Studio Code](https://code.visualstudio.com/).
+- Install CloudFormation template to quickly deploy and test the solution. Follow the steps that are mentioned in this [link](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html) to deploy the stack.
+- Permissions to deploy an DynamoDB table and an AWS Lambda function.
 
 ### AWS account requirements (If applicable)
 
@@ -70,19 +59,8 @@ We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/la
 **Example:** “This deployment requires you have public ACM certificate available in your AWS account”
 
 **Example resources:**
-- ACM certificate 
-- DNS record
-- S3 bucket
-- VPC
-- IAM role with specific permissions
-- Enabling a Region or service etc.
-
-
-### aws cdk bootstrap (if sample code has aws-cdk)
-
-<If using aws-cdk, include steps for account bootstrap for new cdk users.>
-
-**Example blurb:** “This Guidance uses aws-cdk. If you are using aws-cdk for first time, please perform the below bootstrapping....”
+- Amazon DynamoDB
+- AWS Lambda
 
 ### Service limits  (if applicable)
 
