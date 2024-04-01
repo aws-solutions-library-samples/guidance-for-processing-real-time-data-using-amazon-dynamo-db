@@ -33,7 +33,7 @@ Architecture diagram:
 
 ![Architecture diagram](./assets/images/architecture.png)
 
-### Cost ( required )
+### Cost 
 
 The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US East (N. Virginia) Region for one month.
 
