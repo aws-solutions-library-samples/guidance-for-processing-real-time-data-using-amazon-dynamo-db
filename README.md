@@ -37,16 +37,13 @@ Architecture diagram:
 
 The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US East (N. Virginia) Region for one month.
 
-We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
-
-### Sample Cost Table ( required )
-
-The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US East (N. Virginia) Region for one month.
-
-| AWS service  | Dimensions | Cost [USD] |
+| AWS service  | Dimensions | Monthly Cost [USD] |
 | ----------- | ------------ | ------------ |
-| Amazon DynamoDB | Average item size 0.5kb, 0.5 RCU and 1 WCU per message  | $ 3.50month |
-| AWS Lambda | 1,000 active users per month without advanced security feature | $ 0.00 |
+| Amazon DynamoDB | Average item size 0.5kb, 0.5 RCU and 1 WCU per message  | $ 17.08 month |
+| AWS Lambda | 1 Million requests per month without advanced security feature | $ 6.73 month |
+| Total |  | $ 23.81 |
+
+We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
 
 ## Prerequisites (required)
 
