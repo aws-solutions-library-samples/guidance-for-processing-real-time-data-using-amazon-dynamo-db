@@ -35,16 +35,9 @@ Architecture diagram:
 
 ### Cost ( required )
 
-This section is for a high-level cost estimate. Think of a likely straightforward scenario with reasonable assumptions based on the problem the Guidance is trying to solve. If applicable, provide an in-depth cost breakdown table in this section.
+The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US East (N. Virginia) Region for one month.
 
-Start this section with the following boilerplate text:
-
-_You are responsible for the cost of the AWS services used while running this Guidance. As of <month> <year>, the cost for running this Guidance with the default settings in the <Default AWS Region (Most likely will be US East (N. Virginia)) > is approximately $<n.nn> per month for processing ( <nnnnn> records )._
-
-Replace this amount with the approximate cost for running your Guidance in the default Region. This estimate should be per month and for processing/serving resonable number of requests/entities.
-
-Suggest you keep this boilerplate text:
-_We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance._
+We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
 
 ### Sample Cost Table ( required )
 
@@ -52,8 +45,8 @@ The following table provides a sample cost breakdown for deploying this Guidance
 
 | AWS service  | Dimensions | Cost [USD] |
 | ----------- | ------------ | ------------ |
-| Amazon API Gateway | 1,000,000 REST API calls per month  | $ 3.50month |
-| Amazon Cognito | 1,000 active users per month without advanced security feature | $ 0.00 |
+| Amazon DynamoDB | Average item size 0.5kb, 0.5 RCU and 1 WCU per message  | $ 3.50month |
+| AWS Lambda | 1,000 active users per month without advanced security feature | $ 0.00 |
 
 ## Prerequisites (required)
 
