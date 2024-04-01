@@ -85,18 +85,16 @@ Deployment steps must be numbered, comprehensive, and usable to customers at any
 **Example:**
 
 1. Clone the repo using command ``` git clone https://github.com/aws-solutions-library-samples/guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws.git```
-2. cd to the repo folder ```cd <repo-name>```
-3. Install packages in requirements using command ```pip install requirement.txt```
-4. Edit content of **file-name** and replace **s3-bucket** with the bucket name in your account.
-5. Run this command to deploy the stack ```cdk deploy``` 
-6. Capture the domain name created by running this CLI command ```aws apigateway ............```
-
-```
+2. cd to the repo folder ```cd guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws```
+3. cd to deployment folder to deploy the cloudformation template ```cd deployment```
+4. Run the below command to deploy the stack in your account.
+    ```
 aws cloudformation create-stack \
-  --stack-name NlqMainStack \
+  --stack-name ddbaggregate \
   --template-body file://CloudFormation.yaml \
  --capabilities CAPABILITY_NAMED_IAM
 ```
+
 
 
 ## Deployment Validation  (required)
