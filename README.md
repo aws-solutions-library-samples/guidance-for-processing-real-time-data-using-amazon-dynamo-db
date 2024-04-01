@@ -91,6 +91,12 @@ Deployment steps must be numbered, comprehensive, and usable to customers at any
 5. Run this command to deploy the stack ```cdk deploy``` 
 6. Capture the domain name created by running this CLI command ```aws apigateway ............```
 
+```
+aws cloudformation create-stack \
+  --stack-name NlqMainStack \
+  --template-body file://CloudFormation.yaml \
+ --capabilities CAPABILITY_NAMED_IAM
+```
 
 
 ## Deployment Validation  (required)
