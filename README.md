@@ -45,20 +45,20 @@ The following table provides a sample cost breakdown for deploying this Guidance
 
 We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
 
-## Prerequisites (required)
+## Prerequisites
 
 - The [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed.
 - The visual editor of your choice, for example [Visual Studio Code](https://code.visualstudio.com/).
 - Install CloudFormation template to quickly deploy and test the solution. Follow the steps that are mentioned in this [link](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html) to deploy the stack.
 - Permissions to deploy an DynamoDB table and an AWS Lambda function.
 
+## Operating systems
+
+This solution supports build environments in Mac or Windows.
+
 ### AWS account requirements (If applicable)
+This deployment requires that you have access to the following AWS services:
 
-*List out pre-requisites required on the AWS account if applicable, this includes enabling AWS regions, requiring ACM certificate.*
-
-**Example:** “This deployment requires you have public ACM certificate available in your AWS account”
-
-**Example resources:**
 - Amazon DynamoDB
 - AWS Lambda
 
