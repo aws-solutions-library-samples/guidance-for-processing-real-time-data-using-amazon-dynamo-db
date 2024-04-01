@@ -88,10 +88,12 @@ Deployment steps must be numbered, comprehensive, and usable to customers at any
 2. cd to the repo folder ```cd guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws```
 3. cd to deployment folder to deploy the cloudformation template ```cd deployment```
 4. Run the below command to deploy the stack in your account.
-    ```aws cloudformation create-stack \
-  --stack-name ddbaggregate \
-  --template-body file://CloudFormation.yaml \
- --capabilities CAPABILITY_NAMED_IAM```
+```
+aws cloudformation create-stack \
+--stack-name ddbaggregate \
+--template-body file://CloudFormation.yaml \
+--capabilities CAPABILITY_NAMED_IAM
+```
 
 
 
