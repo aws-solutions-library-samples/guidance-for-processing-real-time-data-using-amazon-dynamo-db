@@ -84,7 +84,7 @@ Deployment steps must be numbered, comprehensive, and usable to customers at any
  
 **Example:**
 
-1. Clone the repo using command ```git clone xxxxxxxxxx```
+1. Clone the repo using command ``` git clone https://github.com/aws-solutions-library-samples/guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws.git```
 2. cd to the repo folder ```cd <repo-name>```
 3. Install packages in requirements using command ```pip install requirement.txt```
 4. Edit content of **file-name** and replace **s3-bucket** with the bucket name in your account.
