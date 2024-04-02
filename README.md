@@ -115,6 +115,7 @@ For Windows:
      --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
 ```
 The following image shows how the table data would look like after the insert statements in NoSQL Workbench.
+![testpic1](./assets/images/TestPic1.png)
 
 ## Next Steps (required)
 
