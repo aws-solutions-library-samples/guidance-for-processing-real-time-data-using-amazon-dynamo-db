@@ -86,7 +86,7 @@ aws cloudformation create-stack \
 
 * Open CloudFormation console and verify the status of the template with the name starting with xxxxxx.
 * If deployment is successful, you should see an active database instance with the name starting with <xxxxx> in        the RDS console.
-*  Run the following CLI command to validate the deployment: ```aws cloudformation describe xxxxxxxxxxxxx```
+* Run the following CLI command to validate the deployment: ```aws cloudformation describe xxxxxxxxxxxxx```
 
 
 
