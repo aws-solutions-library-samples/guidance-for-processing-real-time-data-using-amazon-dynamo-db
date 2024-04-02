@@ -56,20 +56,11 @@ We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/la
 
 This solution supports build environments in Mac or Windows.
 
-### AWS account requirements (If applicable)
+### AWS account requirements 
 This deployment requires that you have access to the following AWS services:
 
 - Amazon DynamoDB
 - AWS Lambda
-
-### Service limits  (if applicable)
-
-<Talk about any critical service limits that affect the regular functioning of the Guidance. If the Guidance requires service limit increase, include the service name, limit name and link to the service quotas page.>
-
-### Supported Regions (if applicable)
-
-<If the Guidance is built for specific AWS Regions, or if the services used in the Guidance do not support all Regions, please specify the Region this Guidance is best suited for>
-
 
 ## Deployment Steps (required)
 
