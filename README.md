@@ -102,8 +102,10 @@ Provide suggestions and recommendations about how customers can modify the param
 ## Cleanup
 
 1. To delete the stack deployed using the CloudFormation template follow the steps mentioned in this [link](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-delete-stack.html).
-2. If using AWS Cli run the followinf command
-   ``` aws cloudformation delete-stack --stack-name ${STACK_NAME} ```
+2. If using AWS Cli run the followinf command: 
+   ```
+   aws cloudformation delete-stack --stack-name ${STACK_NAME}
+   ```
 
 
 ## FAQ, known issues, additional considerations, and limitations (optional)
