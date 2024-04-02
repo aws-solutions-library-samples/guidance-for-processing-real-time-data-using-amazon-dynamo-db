@@ -16,13 +16,6 @@ List the top-level sections of the README template, along with a hyperlink to th
 6. [Next Steps](#next-steps-required)
 7. [Cleanup](#cleanup-required)
 
-***Optional***
-
-8. [FAQ, known issues, additional considerations, and limitations](#faq-known-issues-additional-considerations-and-limitations-optional)
-9. [Revisions](#revisions-optional)
-10. [Notices](#notices-optional)
-11. [Authors](#authors-optional)
-
 ## Overview
 
 This AWS Guidance is built to showcase how to perform aggregations on Amazon DynamoDB tables using Amazon DynamoDB Streams and AWS Lambda. It addresses the challenge of efficiently aggregating data in DynamoDB tables, which is crucial for applications needing to perform operations like counting, summing, or determining max/min values directly on DynamoDB without exporting data to other services or performing costly table scans. This solution leverages the real-time processing capability of DynamoDB Streams coupled with the compute power of AWS Lambda to efficiently aggregate data, offering a method to handle real-time data aggregation needs within DynamoDB itself.
@@ -158,10 +151,9 @@ The following image is how the `item_count_by_date` table which contains the agg
 
 ![testpic2](./assets/images/TestPic2.png)
 
-## Next Steps (required)
+## Next Steps
 
-Provide suggestions and recommendations about how customers can modify the parameters and the components of the Guidance to further enhance it according to their requirements.
-
+Having explored how to execute one of the aggregate functions, addition, you can now adjust the Lambda function to experiment with and carry out other aggregate functions. If your use case aligns with the example provided in the guidance, simply update the table names in the Lambda function to begin performing the aggregations.
 
 ## Cleanup
 
@@ -172,44 +164,6 @@ Provide suggestions and recommendations about how customers can modify the param
    ```
 
 
-## FAQ, known issues, additional considerations, and limitations (optional)
+## Notices
 
-
-**Known issues (optional)**
-
-<If there are common known issues, or errors that can occur during the Guidance deployment, describe the issue and resolution steps here>
-
-
-**Additional considerations (if applicable)**
-
-<Include considerations the customer must know while using the Guidance, such as anti-patterns, or billing considerations.>
-
-**Examples:**
-
-- “This Guidance creates a public AWS bucket required for the use-case.”
-- “This Guidance created an Amazon SageMaker notebook that is billed per hour irrespective of usage.”
-- “This Guidance creates unauthenticated public API endpoints.”
-
-
-Provide a link to the *GitHub issues page* for users to provide feedback.
-
-
-**Example:** *“For any feedback, questions, or suggestions, please use the issues tab under this repo.”*
-
-## Revisions (optional)
-
-Document all notable changes to this project.
-
-Consider formatting this section based on Keep a Changelog, and adhering to Semantic Versioning.
-
-## Notices (optional)
-
-Include a legal disclaimer
-
-**Example:**
 *Customers are responsible for making their own independent assessment of the information in this Guidance. This Guidance: (a) is for informational purposes only, (b) represents AWS current product offerings and practices, which are subject to change without notice, and (c) does not create any commitments or assurances from AWS and its affiliates, suppliers or licensors. AWS products or services are provided “as is” without warranties, representations, or conditions of any kind, whether express or implied. AWS responsibilities and liabilities to its customers are controlled by AWS agreements, and this Guidance is not part of, nor does it modify, any agreement between AWS and its customers.*
-
-
-## Authors (optional)
-
-Name of code contributors
