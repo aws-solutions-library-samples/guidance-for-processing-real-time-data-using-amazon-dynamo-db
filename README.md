@@ -62,9 +62,9 @@ This deployment requires that you have access to the following AWS services:
 - Amazon DynamoDB
 - AWS Lambda
 
-## Deployment Steps (required)
+## Deployment Steps
 
-Deployment steps must be numbered, comprehensive, and usable to customers at any level of AWS expertise. The steps must include the precise commands to run, and describe the action it performs.
+These deployment instructions are optimized to best work on Mac or Amazon Linux 2023. Deployment in another OS may require additional steps.
 
 1. Clone the repo using command ``` git clone https://github.com/aws-solutions-library-samples/guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws.git```
 2. cd to the repo folder ```cd guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws```
@@ -77,11 +77,13 @@ aws cloudformation create-stack \
 --capabilities CAPABILITY_NAMED_IAM
 ```
 
-## Deployment Validation  (required)
+## Deployment Validation 
 
 Open CloudFormation console and verify the status of the template with the name of the stack specified in step 4 of the deployment steps.
 
-## Running the Guidance (required)
+## Running the Guidance
+
+Once the CloudFormation stack is deployed, Follow the below steps to test the guidence.
 
 1. Insert test items to the source DynamoDB table and verify the aggregated data based on Item in the target table.
 For Linux or Mac:
