@@ -23,7 +23,7 @@ List the top-level sections of the README template, along with a hyperlink to th
 10. [Notices](#notices-optional)
 11. [Authors](#authors-optional)
 
-## Overview (required)
+## Overview
 
 This AWS Guidance is built to showcase how to perform aggregations on Amazon DynamoDB tables using Amazon DynamoDB Streams and AWS Lambda. It addresses the challenge of efficiently aggregating data in DynamoDB tables, which is crucial for applications needing to perform operations like counting, summing, or determining max/min values directly on DynamoDB without exporting data to other services or performing costly table scans. This solution leverages the real-time processing capability of DynamoDB Streams coupled with the compute power of AWS Lambda to efficiently aggregate data, offering a method to handle real-time data aggregation needs within DynamoDB itself.
 
@@ -75,15 +75,6 @@ This deployment requires that you have access to the following AWS services:
 
 Deployment steps must be numbered, comprehensive, and usable to customers at any level of AWS expertise. The steps must include the precise commands to run, and describe the action it performs.
 
-* All steps must be numbered.
-* If the step requires manual actions from the AWS console, include a screenshot if possible.
-* The steps must start with the following command to clone the repo. ```git clone xxxxxxx```
-* If applicable, provide instructions to create the Python virtual environment, and installing the packages using ```requirement.txt```.
-* If applicable, provide instructions to capture the deployed resource ARN or ID using the CLI command (recommended), or console action.
-
- 
-**Example:**
-
 1. Clone the repo using command ``` git clone https://github.com/aws-solutions-library-samples/guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws.git```
 2. cd to the repo folder ```cd guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws```
 3. cd to deployment folder to deploy the cloudformation template ```cd deployment```
@@ -94,8 +85,6 @@ aws cloudformation create-stack \
 --template-body file://CloudFormation.yaml \
 --capabilities CAPABILITY_NAMED_IAM
 ```
-
-
 
 ## Deployment Validation  (required)
 
