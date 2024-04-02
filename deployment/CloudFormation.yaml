@@ -1,0 +1,148 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  MyLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: blogrole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaDynamoDBExecutionRole
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+  OrdersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Order_by_item
+      AttributeDefinitions:
+        - AttributeName: orderid
+          AttributeType: S
+        - AttributeName: order_date
+          AttributeType: S
+      KeySchema:
+        - AttributeName: orderid
+          KeyType: HASH
+        - AttributeName: order_date
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      Tags:
+        - Key: Name
+          Value: Order_by_item
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
+  OrdersByDateTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: item_count_by_date
+      AttributeDefinitions:
+        - AttributeName: item_number
+          AttributeType: S
+        - AttributeName: order_date
+          AttributeType: S
+      KeySchema:
+        - AttributeName: item_number
+          KeyType: HASH
+        - AttributeName: order_date
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      Tags:
+        - Key: Name
+          Value: item_count_by_date
+
+  OrdersTablePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: OrdersTablePolicy
+      Roles:
+        - !Ref MyLambdaRole
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - dynamodb:GetItem
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:DeleteItem
+            Resource:
+              - !GetAtt OrdersTable.Arn
+
+  OrdersByDateTablePolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: OrdersByDateTablePolicy
+      Roles:
+        - !Ref MyLambdaRole
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - dynamodb:GetItem
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:DeleteItem
+            Resource:
+              - !GetAtt OrdersByDateTable.Arn
+  
+  ProcessEventLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.7
+      Timeout: 300
+      Handler: index.lambda_handler
+      Role: !GetAtt MyLambdaRole.Arn 
+      Code:
+        ZipFile: |
+          import json
+          import os
+          import boto3
+
+          dynamodb = boto3.resource("dynamodb")
+          orders_table = dynamodb.Table(os.environ["source_table_name"])
+          orders_by_date_table = dynamodb.Table(os.environ["target_table_name"])
+
+          def lambda_handler(event, context):
+              for record in event["Records"]:
+                  new_item = record["dynamodb"]["NewImage"]
+
+                  # Extract the order date and item number from the new item
+                  order_date = new_item.get("order_date", {}).get("S")
+                  item_number = new_item.get("item_number", {}).get("S")
+                  quantity = int(new_item.get("quantity", {}).get("N", 0))
+
+                  # Ensure that the required attributes exist
+                  if order_date and item_number and quantity:
+                      # Construct the partition key for the orders_by_date table
+                      date_partition_key = order_date.split("T")[0]
+                      # update orders_by_date table
+                      orders_by_date_table.update_item( 
+                          Key={"order_date": date_partition_key, "item_number": item_number},
+                          UpdateExpression="ADD #q :val",
+                          ExpressionAttributeNames={"#q": "quantity"},
+                          ExpressionAttributeValues={":val": quantity}
+                      )
+      Environment:
+        Variables:
+          source_table_name: !Ref OrdersTable
+          target_table_name: !Ref OrdersByDateTable
+
+  LambdaEventSourceMapping:
+    Type: AWS::Lambda::EventSourceMapping
+    Properties:
+      EventSourceArn: !GetAtt OrdersTable.StreamArn
+      FunctionName: !Ref ProcessEventLambda
+      StartingPosition: TRIM_HORIZON
+      FilterCriteria:
+        Filters:
+          - Pattern: "{\"eventName\": [\"INSERT\", \"MODIFY\"]}"
