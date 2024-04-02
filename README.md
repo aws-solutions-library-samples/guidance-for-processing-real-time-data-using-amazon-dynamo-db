@@ -83,12 +83,10 @@ Open CloudFormation console and verify the status of the template with the name 
 
 ## Running the Guidance (required)
 
-#### Insert a new record into the source table to trigger the lambda function which performs the aggregation.
-
-    Insert test items to the source DynamoDB table and verify the aggregated data based on Item in the target table.
-    For Linux or Mac:
-
-    aws dynamodb put-item --table-name Order_by_item \
+1. Insert test items to the source DynamoDB table and verify the aggregated data based on Item in the target table.
+For Linux or Mac:
+```
+     aws dynamodb put-item --table-name Order_by_item \
      --item '{"orderid": {"S": "178526"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item123"}, "quantity": {"N": "10"}}'
      
      aws dynamodb put-item --table-name Order_by_item \
@@ -99,9 +97,10 @@ Open CloudFormation console and verify the status of the template with the name 
      
      aws dynamodb put-item --table-name Order_by_item \
      --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
+```
 
     For Windows:
-
+```
     aws dynamodb put-item --table-name Order_by_item ^
      --item '{"orderid": {"S": "178526"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item123"}, "quantity": {"N": "10"}}'
      
@@ -113,7 +112,7 @@ Open CloudFormation console and verify the status of the template with the name 
      
      aws dynamodb put-item --table-name Order_by_item ^
      --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
-
+```
 
 ## Next Steps (required)
 
