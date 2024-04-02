@@ -99,7 +99,8 @@ For Linux or Mac:
      --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
 ```
 
-    For Windows:
+For Windows:
+
 ```
     aws dynamodb put-item --table-name Order_by_item ^
      --item '{"orderid": {"S": "178526"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item123"}, "quantity": {"N": "10"}}'
@@ -113,6 +114,7 @@ For Linux or Mac:
      aws dynamodb put-item --table-name Order_by_item ^
      --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
 ```
+The following image shows how the table data would look like after the insert statements in NoSQL Workbench.
 
 ## Next Steps (required)
 
