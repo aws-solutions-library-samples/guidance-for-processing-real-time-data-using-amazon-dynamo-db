@@ -83,15 +83,36 @@ Open CloudFormation console and verify the status of the template with the name 
 
 ## Running the Guidance (required)
 
-<Provide instructions to run the Guidance with the sample data or input provided, and interpret the output received.> 
+#### Insert a new record into the source table to trigger the lambda function which performs the aggregation.
 
-This section should include:
+    Insert test items to the source DynamoDB table and verify the aggregated data based on Item in the target table.
+    For Linux or Mac:
 
-* Guidance inputs
-* Commands to run
-* Expected output (provide screenshot if possible)
-* Output description
+    aws dynamodb put-item --table-name Order_by_item \
+     --item '{"orderid": {"S": "178526"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item123"}, "quantity": {"N": "10"}}'
+     
+     aws dynamodb put-item --table-name Order_by_item \
+     --item '{"orderid": {"S": "178527"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item123"}, "quantity": {"N": "30"}}'
 
+     aws dynamodb put-item --table-name Order_by_item \
+     --item '{"orderid": {"S": "172528"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "10"}}'
+     
+     aws dynamodb put-item --table-name Order_by_item \
+     --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
+
+    For Windows:
+
+    aws dynamodb put-item --table-name Order_by_item ^
+     --item '{"orderid": {"S": "178526"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item123"}, "quantity": {"N": "10"}}'
+     
+     aws dynamodb put-item --table-name Order_by_item ^
+     --item '{"orderid": {"S": "178527"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item123"}, "quantity": {"N": "30"}}'
+
+     aws dynamodb put-item --table-name Order_by_item ^
+     --item '{"orderid": {"S": "178528"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "10"}}'
+     
+     aws dynamodb put-item --table-name Order_by_item ^
+     --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
 
 
 ## Next Steps (required)
@@ -102,7 +123,7 @@ Provide suggestions and recommendations about how customers can modify the param
 ## Cleanup
 
 1. To delete the stack deployed using the CloudFormation template follow the steps mentioned in this [link](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-delete-stack.html).
-2. If using AWS Cli run the followinf command: 
+2. If using AWS Cli run the following command: 
    ```
    aws cloudformation delete-stack --stack-name ${STACK_NAME}
    ```
