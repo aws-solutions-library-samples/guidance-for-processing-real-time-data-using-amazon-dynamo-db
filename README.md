@@ -61,7 +61,7 @@ These deployment instructions are optimized to best work on Mac or Amazon Linux 
 
 1. Clone the repo using command ``` git clone https://github.com/aws-solutions-library-samples/guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws.git```
 2. cd to the repo folder ```cd guidance-for-building-aggregations-for-dynamodb-tables-using-amazon-dynamodb-streams-on-aws```
-3. cd to deployment folder to deploy the cloudformation template ```cd deployment```
+3. cd to deployment folder to deploy the CloudFormation template ```cd deployment```
 4. Run the below command to deploy the stack in your account.
 ```
 aws cloudformation create-stack \
