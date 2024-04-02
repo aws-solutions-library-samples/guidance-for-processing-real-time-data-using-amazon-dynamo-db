@@ -79,16 +79,7 @@ aws cloudformation create-stack \
 
 ## Deployment Validation  (required)
 
-<Provide steps to validate a successful deployment, such as terminal output, verifying that the resource is created, status of the CloudFormation template, etc.>
-
-
-**Examples:**
-
-* Open CloudFormation console and verify the status of the template with the name starting with xxxxxx.
-* If deployment is successful, you should see an active database instance with the name starting with <xxxxx> in        the RDS console.
-* Run the following CLI command to validate the deployment: ```aws cloudformation describe xxxxxxxxxxxxx```
-
-
+Open CloudFormation console and verify the status of the template with the name of the stack specified in step 4 of the deployment steps.
 
 ## Running the Guidance (required)
 
@@ -108,11 +99,11 @@ This section should include:
 Provide suggestions and recommendations about how customers can modify the parameters and the components of the Guidance to further enhance it according to their requirements.
 
 
-## Cleanup (required)
+## Cleanup
 
-- Include detailed instructions, commands, and console actions to delete the deployed Guidance.
-- If the Guidance requires manual deletion of resources, such as the content of an S3 bucket, please specify.
-
+1. To delete the stack deployed using the CloudFormation template follow the steps mentioned in this [link](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-delete-stack.html).
+2. If using AWS Cli run the followinf command
+   ``` aws cloudformation delete-stack --stack-name ${STACK_NAME} ```
 
 
 ## FAQ, known issues, additional considerations, and limitations (optional)
