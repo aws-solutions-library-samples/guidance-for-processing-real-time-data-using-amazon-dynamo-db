@@ -117,6 +117,45 @@ For Windows:
 The following image shows how the table data would look like after the insert statements in NoSQL Workbench.
 ![testpic1](./assets/images/TestPic1.png)
 
+2. Verify if the target table has the aggregated data using AWS CLI:
+ For Linux or Mac:
+ ```
+aws dynamodb query --table-name item_count_by_date \
+    --key-condition-expression "item_number = :pkValue" \
+    --expression-attribute-values '{":pkValue": {"S": "item123"}}' \
+    --projection-expression "item_number, quantity"
+```
+For Windows:
+```
+ aws dynamodb query --table-name item_count_by_date ^
+    --key-condition-expression "item_number = :pkValue" ^
+    --expression-attribute-values '{":pkValue": {"S": "item123"}}' ^
+    --projection-expression "item_number, quantity"
+```
+
+Response:
+```
+{
+    "Items": [
+        {
+            "quantity": {
+                "N": "40"
+            },
+            "item_number": {
+                "S": "item123"
+            }
+        }
+    ],
+    "Count": 1,
+    "ScannedCount": 1,
+    "ConsumedCapacity": null
+}
+```
+
+The following image is how the `item_count_by_date` table which contains the aggregated data in NoSQL Workbench.
+
+![testpic2](./assets/images/TestPic2.png)
+
 ## Next Steps (required)
 
 Provide suggestions and recommendations about how customers can modify the parameters and the components of the Guidance to further enhance it according to their requirements.
