@@ -54,6 +54,7 @@ This solution supports build environments in Mac or Windows.
 ### AWS account requirements 
 This deployment requires that you have access to the following AWS services:
 
+- Amazon API Gateway
 - Amazon DynamoDB
 - AWS Lambda
 
