@@ -81,7 +81,7 @@ Open CloudFormation console and verify the status of the template with the name 
 
 Once the CloudFormation stack is deployed, Follow the below steps to test the guidence.
 
-1. Insert test items to the source DynamoDB table (Order_by_item).
+1. Insert test items to the source DynamoDB table `(Order_by_item)`.
 For Linux or Mac:
 ```
      aws dynamodb put-item --table-name Order_by_item \
@@ -112,10 +112,10 @@ For Windows:
      aws dynamodb put-item --table-name Order_by_item ^
      --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
 ```
-The following image shows how the table data would look like after the insert statements in NoSQL Workbench.
+The following image shows how the source DynamoDB table (`Order_by_item`) data would look like after the insert statements in NoSQL Workbench.
 ![testpic1](./assets/images/TestPic1.png)
 
-2. Verify if the target table (item_count_by_date)  has the aggregated data using AWS CLI:
+2. Verify if the target DynamoDB table `(item_count_by_date)`  has the aggregated data using AWS CLI:
  For Linux or Mac:
  ```
 aws dynamodb query --table-name item_count_by_date \
@@ -150,7 +150,7 @@ Response:
 }
 ```
 
-The following image is how the `item_count_by_date` table which contains the aggregated data in NoSQL Workbench.
+This image shows the target DynamoDB table `(item_count_by_date)`, which contains the aggregated data, as viewed in NoSQL Workbench.
 
 ![testpic2](./assets/images/TestPic2.png)
 
