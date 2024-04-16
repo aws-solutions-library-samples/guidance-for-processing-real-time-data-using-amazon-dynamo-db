@@ -113,6 +113,7 @@ For Windows:
      --item '{"orderid": {"S": "178529"}, "order_date": {"S": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'"}, "item_number": {"S": "item312"}, "quantity": {"N": "30"}}'
 ```
 The following image shows how the source DynamoDB table (`Order_by_item`) data would look like after the insert statements in NoSQL Workbench.
+
 ![testpic1](./assets/images/TestPic1.png)
 
 2. Verify if the target DynamoDB table `(item_count_by_date)`  has the aggregated data using AWS CLI:
