@@ -27,14 +27,16 @@ Architecture diagram:
 ![Architecture diagram](./assets/images/architecture.png)
 
 ### Cost 
+You are responsible for the cost of the AWS services used while running this Guidance.
 
-The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US East (N. Virginia) Region for one month.
+As of 04/15/2024, the cost for running this guidance with the default settings in the US East (N. Virginia) is approximately $48.27 per month for processing 1 million items.
+
 
 | AWS service  | Dimensions | Monthly Cost [USD] |
 | ----------- | ------------ | ------------ |
-| Amazon DynamoDB | Average item size 0.5kb, 0.5 RCU and 1 WCU per message  | $ 17.08 month |
-| AWS Lambda | 1 Million requests per month without advanced security feature | $ 6.73 month |
-| Total |  | $ 23.81 |
+| Amazon DynamoDB | Average item size 0.5kb, 1 WCU per message  | $ 18.05 month |
+| AWS Lambda | 1 Million requests per month, Execution time of 20 milliseconds, 128 MB of memory allocated, Concurrency of 100  | $ 30.22 month |
+| Total |  | $ 48.27 |
 
 We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
 
