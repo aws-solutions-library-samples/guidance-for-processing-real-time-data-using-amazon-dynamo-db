@@ -81,7 +81,7 @@ Open CloudFormation console and verify the status of the template with the name 
 
 Once the CloudFormation stack is deployed, Follow the below steps to test the guidence.
 
-1. Insert test items to the source DynamoDB table and verify the aggregated data based on Item in the target table.
+1. Insert test items to the source DynamoDB table (Order_by_item).
 For Linux or Mac:
 ```
      aws dynamodb put-item --table-name Order_by_item \
@@ -115,7 +115,7 @@ For Windows:
 The following image shows how the table data would look like after the insert statements in NoSQL Workbench.
 ![testpic1](./assets/images/TestPic1.png)
 
-2. Verify if the target table has the aggregated data using AWS CLI:
+2. Verify if the target table (item_count_by_date)  has the aggregated data using AWS CLI:
  For Linux or Mac:
  ```
 aws dynamodb query --table-name item_count_by_date \
@@ -163,7 +163,7 @@ Having explored how to execute one of the aggregate functions, addition, you can
 1. To delete the stack deployed using the CloudFormation template follow the steps mentioned in this [link](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-delete-stack.html).
 2. If using AWS Cli run the following command: 
    ```
-   aws cloudformation delete-stack --stack-name ${STACK_NAME}
+   aws cloudformation delete-stack --stack-name ddbaggregate
    ```
 
 
