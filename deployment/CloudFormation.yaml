@@ -98,7 +98,7 @@ Resources:
   ProcessEventLambda:
     Type: AWS::Lambda::Function
     Properties:
-      Runtime: python3.7
+      Runtime: python3.10
       Timeout: 300
       Handler: index.lambda_handler
       Role: !GetAtt MyLambdaRole.Arn 
