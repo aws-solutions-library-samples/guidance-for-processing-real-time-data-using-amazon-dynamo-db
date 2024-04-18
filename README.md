@@ -82,6 +82,7 @@ Open CloudFormation console and verify the status of the template with the name 
 Once the CloudFormation stack is deployed, Follow the below steps to test the guidence.
 
 1. Insert test items to the source DynamoDB table `(Order_by_item)`.
+   
 For Linux or Mac:
 ```
      aws dynamodb put-item --table-name Order_by_item \
