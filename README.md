@@ -9,7 +9,7 @@ List the top-level sections of the README template, along with a hyperlink to th
 1. [Overview](#overview)
     - [Cost](#cost)
 2. [Prerequisites](#prerequisites)
-    - [Operating Systems](#operating-system)
+    - [Operating Systems](#operating-systems)
 3. [Deployment Steps](#deployment-steps)
 4. [Deployment Validation](#deployment-validation)
 5. [Running the Guidance](#running-the-guidance)
