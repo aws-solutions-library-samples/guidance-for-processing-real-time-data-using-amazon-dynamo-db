@@ -1,4 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
+Description: This template creates the required DynamoDB resources (SO9440) and deploys the aggregate Lambda function that performs the aggregation.
+
 Resources:
   MyLambdaRole:
     Type: AWS::IAM::Role
