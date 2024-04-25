@@ -1,4 +1,4 @@
-#  Guidance for building aggregations for Dynamodb tables using Amazon Dynamodb streams on AWS
+# Guidance-for-processing-real-time-data-using-amazon-dynamo-db
 
 ## Table of Content (required)
 
