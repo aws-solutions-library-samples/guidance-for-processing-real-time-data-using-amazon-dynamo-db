@@ -1,4 +1,4 @@
-# Guidance-for-processing-real-time-data-using-amazon-dynamo-db
+# Guidance for processing real time data using Amazon Dynamodb
 
 ## Table of Content (required)
 
