@@ -35,8 +35,8 @@ As of 04/15/2024, the cost for running this guidance with the default settings i
 | AWS service  | Dimensions | Monthly Cost [USD] |
 | ----------- | ------------ | ------------ |
 | Amazon DynamoDB | Table class (Standard), Average item size (1 KB), Data storage size (100 GB), Number of Writes and reads (Eventually consistent) per month (1 million)  | $ 26.38 month |
-| AWS Lambda | 1 Million requests per month, Execution time of 20 milliseconds, 128 MB of memory allocated, Concurrency of 100  | $ 30.22 month |
-| Total |  | $ 56.60 |
+| AWS Lambda | 1 Million requests per month, Execution time of 20 milliseconds, 128 MB of memory allocated, Concurrency of 100  | $ 30.46 month |
+| Total |  | $ 56.84 |
 
 We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
 
