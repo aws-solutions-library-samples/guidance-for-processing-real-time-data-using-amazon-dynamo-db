@@ -61,6 +61,23 @@ Resources:
         - Key: Name
           Value: item_count_by_date
 
+  OrdersHashTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: orders_hash
+      AttributeDefinitions:
+        - AttributeName: hash_key
+          AttributeType: S
+      KeySchema:
+        - AttributeName: hash_key
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      Tags:
+        - Key: Name
+          Value: orders_hash
+
   OrdersTablePolicy:
     Type: AWS::IAM::Policy
     Properties:
@@ -96,6 +113,7 @@ Resources:
               - dynamodb:DeleteItem
             Resource:
               - !GetAtt OrdersByDateTable.Arn
+              - !GetAtt OrdersHashTable.Arn
   
   ProcessEventLambda:
     Type: AWS::Lambda::Function
@@ -106,38 +124,64 @@ Resources:
       Role: !GetAtt MyLambdaRole.Arn 
       Code:
         ZipFile: |
-          import json
-          import os
-          import boto3
+            import json
+            import os
+            import boto3
+            import hashlib
 
-          dynamodb = boto3.resource("dynamodb")
-          orders_table = dynamodb.Table(os.environ["source_table_name"])
-          orders_by_date_table = dynamodb.Table(os.environ["target_table_name"])
+            dynamodb = boto3.resource("dynamodb")
+            aggregate_table = dynamodb.Table(os.environ["target_count_table"])  # Aggregate table
+            hash_store_table = dynamodb.Table(os.environ["hash_store_table"])  # Hash store table
 
-          def lambda_handler(event, context):
-              for record in event["Records"]:
-                  new_item = record["dynamodb"]["NewImage"]
+            def generate_item_hash(order_date, orderid, item_number):
+                # Generate a SHA-256 hash based on the key attributes
+                hash_input = f"{order_date}:{orderid}:{item_number}"
+                return hashlib.sha256(hash_input.encode('utf-8')).hexdigest()
 
-                  # Extract the order date and item number from the new item
-                  order_date = new_item.get("order_date", {}).get("S")
-                  item_number = new_item.get("item_number", {}).get("S")
-                  quantity = int(new_item.get("quantity", {}).get("N", 0))
+            def lambda_handler(event, context):
+                for record in event["Records"]:
+                    new_item = record["dynamodb"]["NewImage"]
 
-                  # Ensure that the required attributes exist
-                  if order_date and item_number and quantity:
-                      # Construct the partition key for the orders_by_date table
-                      date_partition_key = order_date.split("T")[0]
-                      # update orders_by_date table
-                      orders_by_date_table.update_item( 
-                          Key={"order_date": date_partition_key, "item_number": item_number},
-                          UpdateExpression="ADD #q :val",
-                          ExpressionAttributeNames={"#q": "quantity"},
-                          ExpressionAttributeValues={":val": quantity}
-                      )
+                    # Extract the order date, order ID, and item number from the new item
+                    order_date = new_item.get("order_date", {}).get("S")
+                    orderid = new_item.get("orderid", {}).get("S")
+                    item_number = new_item.get("item_number", {}).get("S")
+                    quantity = int(new_item.get("quantity", {}).get("N", 0))
+
+                    # Ensure that the required attributes exist
+                    if order_date and orderid and item_number and quantity:
+                        # Generate a hash based on order_date, orderid, and item_number
+                        item_hash = generate_item_hash(order_date, orderid, item_number)
+                        # Construct the partition key for the item_count_by_date table
+                        date_partition_key = order_date.split("T")[0]
+
+                    # Check if the hash exists in the orders_hash table
+                    try:
+                        response = hash_store_table.get_item(Key={"hash_key": item_hash})
+                        if "Item" in response:
+                            print(f"Item with hash {item_hash} has already been processed. Skipping.")
+                            continue  # Skip processing since it's already been handled
+                    except Exception as e:
+                        print(f"Error checking orders_hash table: {e}")
+                        continue  # If there's an issue with checking, skip this item
+
+                    # Proceed with updating the item_count_by_date table
+                    try:
+                        aggregate_table.update_item(
+                            Key={"order_date": date_partition_key, "item_number": item_number},
+                            UpdateExpression="ADD quantity :val",
+                            ExpressionAttributeValues={":val": quantity}
+                        )
+                        
+                        # Store the hash in the orders_hash table to mark it as processed
+                        hash_store_table.put_item(Item={"hash_key": item_hash})
+
+                    except Exception as e:
+                        print(f"Error updating item_count_by_date table: {e}")
       Environment:
         Variables:
-          source_table_name: !Ref OrdersTable
-          target_table_name: !Ref OrdersByDateTable
+          target_count_table: !Ref OrdersByDateTable
+          hash_store_table: !Ref OrdersHashTable
 
   LambdaEventSourceMapping:
     Type: AWS::Lambda::EventSourceMapping
